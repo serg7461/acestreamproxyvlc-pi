@@ -1,6 +1,6 @@
 sudo: required #is required to use docker service in travis
 
-language: php #can be any language, just php for example
+language: bash 
 
 services: 
   - docker # required, but travis uses older version of docker :(
@@ -9,12 +9,15 @@ install:
   - echo "install nothing!" # put your normal pre-testing installs here
 
 script:
-  - echo "no tests!" # put your normal testing scripts here
+  - docker --version  # document the version travis is using
+  # prepare qemu
+  - docker run --rm --privileged multiarch/qemu-user-static:register --reset
+  # build image
+  - docker build -t vlc ./vlc
 
 after_success:
-  - docker --version  # document the version travis is using
-  - pip install --user awscli # install aws cli w/o sudo
+  
   - export PATH=$PATH:$HOME/.local/bin # put aws in the path
-  - docker build -t vlc ./vlc
+
   
 # sadly, travis doesn't cache docker builds yet, so each build will take a while
