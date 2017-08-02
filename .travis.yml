@@ -14,7 +14,8 @@ script:
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
   # build images
   - docker build -t aceproxy-pi ./aceproxy
-  - docker build -t vlc-pi ./vlc
+  - docker build -t vlc-nox-pi ./vlc
+  - docker build -t acestream-pi ./acestream
 
 after_success:
   
