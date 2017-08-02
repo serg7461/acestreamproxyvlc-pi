@@ -15,6 +15,6 @@ after_success:
   - docker --version  # document the version travis is using
   - pip install --user awscli # install aws cli w/o sudo
   - export PATH=$PATH:$HOME/.local/bin # put aws in the path
-  - docker build -t vlc .
+  - docker build -t vlc ./vlc
   
 # sadly, travis doesn't cache docker builds yet, so each build will take a while
