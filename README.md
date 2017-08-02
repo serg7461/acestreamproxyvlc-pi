@@ -1,4 +1,4 @@
-# acestreamproxyvlc-pi
+# acestreamproxyvlc-pi [![Build Status](https://travis-ci.org/sgoryachkin/acestreamproxyvlc-pi.svg?branch=master)](https://travis-ci.org/sgoryachkin/acestreamproxyvlc-pi)
 ### Dockerized acestream+aceproxy+vlc on raspbian (armhf)
 
 ![kodi live tv channels list screenshot](https://habrastorage.org/files/585/8cb/2c1/5858cb2c1082454e88a849117e26d113.png)
