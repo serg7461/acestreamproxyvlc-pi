@@ -12,7 +12,8 @@ script:
   - docker --version  # document the version travis is using
   # prepare qemu
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
-  # build image
+  # build images
+  - docker build -t aceproxy ./vlc
   - docker build -t vlc ./vlc
 
 after_success:
