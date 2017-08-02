@@ -13,8 +13,8 @@ script:
   # prepare qemu
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
   # build images
-  - docker build -t aceproxy ./vlc
-  - docker build -t vlc ./vlc
+  - docker build -t aceproxy-pi ./aceproxy
+  - docker build -t vlc-pi ./vlc
 
 after_success:
   
