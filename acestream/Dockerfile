@@ -5,6 +5,5 @@ RUN cd / && wget https://github.com/sestus/acestream-openelec/archive/master.zip
 RUN rm acestream_rpi.zip
 RUN cp -avr /acestream-openelec-master/acestream /acestream 
 RUN rm -rf /acestream-openelec-master 
-RUN rm acestream_rpi.zip
 EXPOSE 62062
 ENTRYPOINT ["/acestream/start_acestream.sh"]
