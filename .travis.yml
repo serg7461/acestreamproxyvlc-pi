@@ -29,6 +29,8 @@ script:
   - docker build -t sego/acestream-pi:$COMMIT ./acestream
   
   # push
+  - echo $REPO_VLC:$COMMIT
+  - echo $TRAVIS_BUILD_NUMBER
   - docker tag $REPO_VLC:$COMMIT $REPO_VLC:$TAG
   - docker tag $REPO_VLC:$COMMIT $REPO_VLC:travis-$TRAVIS_BUILD_NUMBER
   - docker push $REPO_VLC
