@@ -1,4 +1,4 @@
-sudo: required #is required to use docker service in travis
+$DOCKER_USERsudo: required #is required to use docker service in travis
 
 language: bash 
 
@@ -22,9 +22,9 @@ script:
   # build images
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
   
-  - export REPO_ACEPROXY=sego/aceproxy-pi
-  - export REPO_VLC=sego/vlc-nox-pi
-  - export REPO_ACESTREAM=sego/acestream-pi
+  - export REPO_ACEPROXY=$DOCKER_USER/aceproxy-pi
+  - export REPO_VLC=$DOCKER_USER/vlc-nox-pi
+  - export REPO_ACESTREAM=$DOCKER_USER/acestream-pi
   
   - docker build -t $REPO_ACEPROXY:$COMMIT ./aceproxy
   - docker build -t $REPO_VLC:$COMMIT ./vlc
