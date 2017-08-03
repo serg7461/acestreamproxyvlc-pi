@@ -18,11 +18,11 @@ install:
 
 script:
   - docker --version  # document the version travis is using
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   # prepare qemu
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
   # build images
+  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
   - export REPO_VLC=sego/vlc-nox-pi
   - docker build -t sego/aceproxy-pi:$COMMIT ./aceproxy
   - docker build -t $REPO_VLC:$COMMIT ./vlc
