@@ -23,14 +23,15 @@ script:
   # prepare qemu
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
   # build images
+  - export REPO_VLC=sego/vlc-nox-pi
   - docker build -t sego/aceproxy-pi:$COMMIT ./aceproxy
-  - docker build -t sego/vlc-nox-pi:$COMMIT ./vlc
+  - docker build -t $REPO_VLC:$COMMIT ./vlc
   - docker build -t sego/acestream-pi:$COMMIT ./acestream
   
   # push
-  - docker tag sego/vlc-nox-pi:$COMMIT $REPO:$TAG
-  - docker tag sego/vlc-nox-pi:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-  - docker push sego/vlc-nox-pi
+  - docker tag $REPO_VLC:$COMMIT $REPO_VLC:$TAG
+  - docker tag $REPO_VLC:$COMMIT $REPO_VLC:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO_VLC
 
 
   
