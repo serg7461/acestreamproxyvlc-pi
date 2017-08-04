@@ -2,8 +2,8 @@
 FROM multiarch/debian-debootstrap:armhf-stretch
 
 # Upgrade system and install vlc-nox
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && DEBIAN_FRONTEND=noninteractive apt-get full-upgrade -y 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y vlc-nox python-gevent python-pip python-dev gcc && DEBIAN_FRONTEND=noninteractive apt-get autoremove && DEBIAN_FRONTEND=noninteractive apt-get clean
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y full-upgrade
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install vlc-nox python-gevent python-pip python-dev gcc && DEBIAN_FRONTEND=noninteractive apt-get -y autoremove && DEBIAN_FRONTEND=noninteractive apt-get -y clean
 RUN adduser --disabled-password --gecos "" aceproxy
 EXPOSE 4212 8011
 USER aceproxy
