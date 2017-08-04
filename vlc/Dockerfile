@@ -1,5 +1,6 @@
 # Set the base image to use to armhf
-FROM arm32v7/debian:stretch
+# FROM arm32v7/debian:stretch
+FROM multiarch/debian-debootstrap:armhf-stretch
 
 # Upgrade system and install vlc-nox
 RUN apt-get update -y
