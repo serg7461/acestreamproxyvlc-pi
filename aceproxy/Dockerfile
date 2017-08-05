@@ -8,5 +8,5 @@ RUN adduser --disabled-password --gecos "" aceproxy
 EXPOSE 8000 8081 
 VOLUME /aceproxy/ 
 ADD aceconfig.py /aceproxy/aceconfig.py
-
+USER aceproxy
 CMD ["/aceproxy/acehttp.py"]
