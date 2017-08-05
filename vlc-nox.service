@@ -4,7 +4,7 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-ExecStartPre=-/usr/bin/docker rm -f vlc-nox
+ExecStartPre=/bin/sh -c 'docker ps -q --filter "name=vlc-nox" | grep -q . && docker rm -f vlc-nox'
 ExecStartPre=-/usr/bin/docker pull sego/vlc-nox-pi
 ExecStart=/usr/bin/docker run  --name vlc-nox -p 4212:4212 -p 8011:8011 sego/vlc-nox-pi -I telnet --clock-jitter -1 --network-caching -1 --sout-mux-caching 2000 --telnet-password admin --telnet-port 4212 --telnet-host 0.0.0.0
 ExecStartPost=/bin/sh -c 'while ! docker ps | grep vlc-nox ; do sleep 0.2; done'
