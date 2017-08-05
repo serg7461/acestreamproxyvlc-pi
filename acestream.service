@@ -1,5 +1,5 @@
 [Unit]
-Description=dockerized acestream
+Description=Dockerized ACEStream
 Requires=docker.service
 After=docker.service
 
@@ -7,7 +7,7 @@ After=docker.service
 ExecStartPre=-/bin/sh -c '(docker ps -q --filter "name=acestream" | grep -q . && docker rm -fv acestream) || false'
 ExecStartPre=-/usr/bin/docker pull sego/acestream-pi
 ExecStart=/usr/bin/docker run --privileged --rm --name acestream -p 62062:62062 sego/acestream-pi --client-console --live-buffer 50 --max-connections 400 --max-peers 200
-ExecStartPost=/bin/sh -c 'while ! docker ps | grep acestream ; do sleep 0.2; done'   
+ExecStartPost=/bin/sh -c 'while ! docker ps | grep acestream; do sleep 0.2; done'   
 ExecStop=/bin/sh -c 'docker ps -q --filter "name=acestream" | grep -q . && docker rm -fv acestream'
 TimeoutSec=0
 RemainAfterExit=no
