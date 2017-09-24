@@ -144,6 +144,11 @@ class AceConfig(acedefconfig.AceDefConfig):
     # transcodecmd['mp2'] = 'ffmpeg -i - -c:a mp2 -c:v mpeg2video -f mpegts -qscale:v 2 -'.split()
     # transcodecmd['mkv'] = 'ffmpeg -i - -c:a copy -c:v copy -f matroska -'.split()
     # transcodecmd['default'] = 'ffmpeg -i - -c:a copy -c:v copy -f mpegts -'.split()
+    transcode_audio = 0
+    # Transcode MP3 (use only when transcode_audio=1)
+    transcode_mp3 = 0
+    # Transcode only AC3 to AAC (use only when transcode_audio=0)
+    transcode_ac3 = 0
     
     # ----------------------------------------------------
     videodelay = 0
