@@ -1,4 +1,4 @@
-$DOCKER_USERsudo: required #is required to use docker service in travis
+sudo: required 
 
 language: bash 
 
@@ -9,13 +9,13 @@ env:
     - COMMIT=${TRAVIS_COMMIT::8}
 
 services: 
-  - docker # required, but travis uses older version of docker :(
+  - docker
 
 install:
-  - echo "install nothing!" # put your normal pre-testing installs here
+  - echo "install nothing!" 
 
 script:
-  - docker --version  # document the version travis is using
+  - docker --version 
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   # prepare qemu
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
@@ -43,6 +43,4 @@ script:
   - docker tag $REPO_ACESTREAM:$COMMIT $REPO_ACESTREAM:travis-$TRAVIS_BUILD_NUMBER
   - docker push $REPO_ACESTREAM
 
-
-  
 # sadly, travis doesn't cache docker builds yet, so each build will take a while
