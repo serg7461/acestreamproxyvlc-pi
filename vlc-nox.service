@@ -7,7 +7,7 @@ After=docker.service
 ExecStartPre=-/usr/bin/docker rm -fv vlc-nox
 ExecStartPre=-/usr/bin/docker pull sego/vlc-nox-pi
 ExecStart=/usr/bin/docker run  --name vlc-nox -p 4212:4212 -p 8011:8011 sego/vlc-nox-pi -I telnet --sout-mux-caching 1500 --telnet-password admin --telnet-port 4212 --telnet-host 0.0.0.0
-ExecStartPost=/bin/sh -c 'while ! docker ps | grep vlc-nox ; do sleep 0.2; done'
+ExecStartPost=/bin/sh -c 'while ! docker ps | grep vlc-nox; do sleep 0.2; done'
 
 ExecStop=/usr/bin/docker rm -fv vlc-nox
 
